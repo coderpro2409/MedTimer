@@ -1,7 +1,7 @@
 import streamlit as st
 from datetime import datetime, time
+import random
 import pandas as pd
-import turtle
 from io import BytesIO
 
 # Page configuration
@@ -252,99 +252,11 @@ MOTIVATIONAL_QUOTES = [
     "🎊 Celebrate every dose - you're doing amazing!"
 ]
 
-# Function to create Turtle graphics
-def create_turtle_graphic(graphic_type="smiley"):
-    """Create turtle graphics for visual feedback"""
-    # Create a turtle screen in memory
-    screen = turtle.Screen()
-    screen.setup(width=400, height=400)
-    screen.bgcolor("white")
-    
-    t = turtle.Turtle()
-    t.speed(0)
-    t.hideturtle()
-    
-    if graphic_type == "smiley":
-        # Draw smiley face
-        t.penup()
-        t.goto(0, -100)
-        t.pendown()
-        t.color("#FFD700")
-        t.begin_fill()
-        t.circle(100)
-        t.end_fill()
-        
-        # Eyes
-        t.penup()
-        t.goto(-40, 40)
-        t.pendown()
-        t.color("black")
-        t.begin_fill()
-        t.circle(15)
-        t.end_fill()
-        
-        t.penup()
-        t.goto(40, 40)
-        t.pendown()
-        t.begin_fill()
-        t.circle(15)
-        t.end_fill()
-        
-        # Smile
-        t.penup()
-        t.goto(-50, 20)
-        t.pendown()
-        t.width(5)
-        t.setheading(-60)
-        t.circle(50, 120)
-        
-    elif graphic_type == "trophy":
-        # Draw trophy
-        t.color("#FFD700")
-        t.penup()
-        t.goto(-50, 50)
-        t.pendown()
-        t.begin_fill()
-        t.goto(50, 50)
-        t.goto(40, -30)
-        t.goto(-40, -30)
-        t.goto(-50, 50)
-        t.end_fill()
-        
-        # Cup top
-        t.penup()
-        t.goto(-60, 50)
-        t.pendown()
-        t.goto(-60, 70)
-        t.goto(60, 70)
-        t.goto(60, 50)
-        
-        # Base
-        t.penup()
-        t.goto(-40, -30)
-        t.pendown()
-        t.begin_fill()
-        t.goto(-60, -60)
-        t.goto(60, -60)
-        t.goto(40, -30)
-        t.goto(-40, -30)
-        t.end_fill()
-    
-    # Convert to image
-    canvas = screen.getcanvas()
-    ps = canvas.postscript(colormode='color')
-    
-    # Close turtle graphics
-    screen.bye()
-    
-    return ps
-
 # Setup Page
 def setup_page():
     st.markdown('<div class="header-box"><h1 style="color: white; margin: 0;">💊 MedTimer - Daily Medicine Companion</h1><p style="font-size: 26px; margin: 10px 0 0 0;">Setup your personalized medicine schedule</p></div>', unsafe_allow_html=True)
     
     # Motivational quote
-    import random
     quote = random.choice(MOTIVATIONAL_QUOTES)
     st.markdown(f'<div class="motivation-box">{quote}</div>', unsafe_allow_html=True)
     
@@ -561,7 +473,6 @@ def main_page():
     ''', unsafe_allow_html=True)
     
     # Motivational quote
-    import random
     quote = random.choice(MOTIVATIONAL_QUOTES)
     st.markdown(f'<div class="motivation-box">{quote}</div>', unsafe_allow_html=True)
     
